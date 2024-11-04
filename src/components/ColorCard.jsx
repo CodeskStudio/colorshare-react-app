@@ -1,5 +1,6 @@
 // src/components/ColorCard.js
 import React from 'react';
+import { FaRegCopy } from "react-icons/fa";
 import { hexToRgb, hexToHsl } from '../utils/colorUtils';
 import namer from 'color-namer';
 
@@ -17,16 +18,10 @@ const ColorCard = ({ color }) => {
 
   return (
     <div className="p-4 border rounded shadow-md" style={{ backgroundColor: color }}>
-      <p className="text-white">HEX: {color}</p>
+      <p className="text-white">HEX: {color} <span><FaRegCopy /></span></p>
       <p className="text-white">RGB: {hexToRgb(color)}</p>
       <p className="text-white">HSL: {hexToHsl(color)}</p>
       <p className="text-white">Name: {getColorName(color)}</p>
-      <button
-        onClick={copyToClipboard}
-        className="mt-2 px-2 py-1 bg-gray-800 text-white rounded"
-      >
-        Copy HEX
-      </button>
     </div>
   );
 };
