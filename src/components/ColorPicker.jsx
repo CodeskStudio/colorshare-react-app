@@ -1,12 +1,11 @@
 // src/components/ColorPicker.js
 import React, { useEffect, useState } from 'react';
-import { HexAlphaColorPicker } from "react-colorful";
+import { RgbaColorPicker } from "react-colorful";
 
 const ColorPicker = ({ onColorPick, defaultColor }) => {
-  const [color, setColor] = useState('#000000');
+  const [color, setColor] = useState({ r: 0, g: 0, b: 0, a: 1.0 });
 
   const handleColorChange = (e) => {
-    console.log(e);
     setColor(e);
     onColorPick(e);
   };
@@ -20,7 +19,7 @@ const ColorPicker = ({ onColorPick, defaultColor }) => {
 
   return (
     <div className="p-4">
-      <HexAlphaColorPicker color={color} onChange={handleColorChange} />
+      <RgbaColorPicker color={color} onChange={handleColorChange} />
     </div>
   );
 };

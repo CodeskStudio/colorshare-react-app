@@ -1,8 +1,10 @@
 // src/components/ColorCard.js
 import React from 'react';
+import fontColorContrast from 'font-color-contrast'
 import { FaRegCopy } from "react-icons/fa";
-import { hexToRgb, hexToHsl } from '../utils/colorUtils';
+import { rgbaToHex, hexToHsl, getRGBAString } from '../utils/colorUtils';
 import namer from 'color-namer';
+import chroma from "chroma-js";
 
 const ColorCard = ({ color }) => {
 
@@ -17,11 +19,11 @@ const ColorCard = ({ color }) => {
   };
 
   return (
-    <div className="p-4 border rounded shadow-md" style={{ backgroundColor: color }}>
-      <p className="text-white">HEX: {color} <span><FaRegCopy /></span></p>
-      <p className="text-white">RGB: {hexToRgb(color)}</p>
-      <p className="text-white">HSL: {hexToHsl(color)}</p>
-      <p className="text-white">Name: {getColorName(color)}</p>
+    <div className="p-4 border rounded shadow-md" style={{ backgroundColor: getRGBAString(color), color: fontColorContrast(color)}}>
+      <p>HEX: {chroma(color).hex()} <span><FaRegCopy /></span></p>
+      <p>RGB: {getRGBAString(color)}</p>
+      <p>HSL: {hexToHsl(color)}</p>
+      <p>Name: {getColorName(color)}</p>
     </div>
   );
 };

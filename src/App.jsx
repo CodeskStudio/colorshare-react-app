@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import { getRandomColor } from './utils/colorUtils';
 
 function App() {
-  const [currentColor, setCurrentColor] = useState('#000000');
+  const [currentColor, setCurrentColor] = useState({ r: 0, g: 0, b: 0, a: 1.0 });
 
 
   useEffect(() => {
