@@ -17,6 +17,29 @@ export function rgbaToHex(r, g, b, a = 1) {
     return hex;
 }
 
+export function hexToRgba(hex) {
+    // Check if the hex string has a hash character
+    if (hex[0] === '#') {
+        hex = hex.slice(1);
+    }
+
+    // Check if the hex string has an alpha component
+    let a;
+    if (hex.length === 8) {
+        a = parseInt(hex.slice(6, 8), 16) / 255;
+        hex = hex.slice(0, 6);
+    } else {
+        a = 1;
+    }
+
+    // Convert the hex string to RGB components
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+
+    return { r, g, b, a };
+}
+
 export function rgbaToHsl(r, g, b, a = 1) {
     // Convert RGB values to the range of 0-1
     r /= 255;
