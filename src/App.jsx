@@ -6,7 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import ColorCode from './components/ColorCode';
 import SavedColors from './components/SavedColors';
 import namer from 'color-namer';
-import { CColor, randomColor } from './utils/colorUtils';
+import { CColor, randomColor, hexToRgba } from './utils/colorUtils';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -54,13 +54,11 @@ export default function App() {
 
   useEffect(() => {
     // get current url to get color from query string
-    // const url = new URL(window.location.href);
-    // const params = url.searchParams;
-    // const getColor = params.get('color');
-
-    const getColor = localStorage.getItem('color');
-    if (getColor) {
-      const [r, g, b, a] = getColor.split(',').map((c) => parseInt(c));
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    const urlColor = params.get('hex'); // format: https://example.com?hex=ff0000
+    if (urlColor) {
+      const { r, g, b, a } = hexToRgba(urlColor);
       setColor({ r, g, b, a });
     } else {
       const { r, g, b, a } = randomColor();
@@ -76,11 +74,20 @@ export default function App() {
   };
 
   const shareColor = () => {
-    navigator.share({
+
+    const shareData = {
       title: 'ColorShare',
-      text: `Color: ${cColor.toHex()}`,
-      url: window.location.href,
-    });
+      text: `Color: ${cColor.toHex()}, RGB: ${cColor.toString("rgb")}, HSL: ${cColor.toString("hsl")}, Name: ${namer(cColor.toString("rgb")).ntc[0]?.name || 'Unknown'}`,
+      url: window.location.origin + `?hex=${cColor.toHex()}`
+    }
+
+    if (navigator.share && navigator.canShare(shareData)) { // check if Web Share API is supported, and data is supported
+      // use Web Share API
+      navigator.share(shareData);
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(shareData.url);
+    }
   }
 
   return (
