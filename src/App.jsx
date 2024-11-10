@@ -73,6 +73,12 @@ export default function App() {
     setSavedColors([...savedColors, cColor]);
   };
 
+
+  const deleteAllColors = () => {
+    localStorage.removeItem('savedColors');
+    setSavedColors([]);
+  };
+
   const shareColor = () => {
 
     const shareData = {
@@ -139,7 +145,7 @@ export default function App() {
             </div>
           </div>
 
-          <SavedColors savedColors={savedColors} />
+          <SavedColors savedColors={savedColors} deleteAllColors={deleteAllColors} />
         </div>
       </div>
       <Footer />

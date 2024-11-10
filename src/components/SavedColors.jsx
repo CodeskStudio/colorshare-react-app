@@ -8,11 +8,7 @@ const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
 };
 
-const deleteAllColors = () => {
-  localStorage.removeItem('savedColors');
-};
-
-export default function SavedColors({ savedColors }) {
+export default function SavedColors({ savedColors, deleteAllColors }) {
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
