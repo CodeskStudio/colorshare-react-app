@@ -8,11 +8,11 @@ const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
 };
 
-export default function SavedColors({ savedColors, deleteAllColors }) {
+export default function SavedColors({ savedColors, deleteAllColors, deleteSpecificColor }) {
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold text-white">Saved Colors</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Saved Colors</h2>
         <button
           onClick={deleteAllColors}
           className={`flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 ${savedColors.length < 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -31,8 +31,8 @@ export default function SavedColors({ savedColors, deleteAllColors }) {
               style={{ backgroundColor: savedColor.toString("hex") }}
             ></div>
             <Menu as="div" className="absolute bottom-2 right-2">
-              <Menu.Button className="bg-white dark:bg-gray-700 rounded-full p-2 shadow-md">
-                <ChevronDownIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+              <Menu.Button className="bg-gray-600 dark:bg-gray-700 rounded-full p-2 shadow-md">
+                <ChevronDownIcon className="h-4 w-4 text-white dark:text-gray-300" />
               </Menu.Button>
               <Menu.Items className="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-700 rounded-md shadow-lg z-10">
                 <Menu.Item>
@@ -77,7 +77,7 @@ export default function SavedColors({ savedColors, deleteAllColors }) {
                       className={`${
                         active ? 'bg-gray-100 dark:bg-gray-600' : ''
                       } block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200`}
-                      onClick={() => console.log('Delete color')}
+                      onClick={() => deleteSpecificColor(index)}
                     >
                       Delete
                     </button>
