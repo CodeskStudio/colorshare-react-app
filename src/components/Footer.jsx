@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-<footer className="bg-gray-800 text-white py-4 mt-auto">
+<footer className="bg-gray-800 text-white py-4 mt-auto select-none">
   <div className="container mx-auto text-center">
     <p className="text-sm">&copy; {new Date().getFullYear()} CodeskStudio. All rights reserved.</p>
     <p className="text-xs mt-2">
@@ -16,7 +16,7 @@ const Footer = () => {
       >
         React
       </a>
-      , 
+      & 
       <a
         href="https://tailwindcss.com"
         target="_blank"
