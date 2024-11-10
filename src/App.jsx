@@ -12,10 +12,16 @@ import Footer from './components/Footer';
 export default function App() {
   const [color, setColor] = useState({ r: 255, g: 0, b: 0, a: 1 });
   const [savedColors, setSavedColors] = useState([]);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const [loadedLocalStorage, setLoadedLocalStorage] = useState(false);
 
+
+  useEffect(() => {
+    const storedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(storedDarkMode);
+  }, []);
+  
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
