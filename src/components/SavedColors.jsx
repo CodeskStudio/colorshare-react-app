@@ -8,7 +8,7 @@ const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
 };
 
-export default function SavedColors({ savedColors, deleteAllColors, deleteSpecificColor }) {
+export default function SavedColors({ savedColors, deleteAllColors, deleteSpecificColor, loadColor }) {
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
@@ -27,8 +27,9 @@ export default function SavedColors({ savedColors, deleteAllColors, deleteSpecif
         savedColors.map((savedColor, index) => (
           <div key={index} className="relative group">
             <div
-              className="w-full h-20 rounded-md shadow-md"
+              className="w-full h-20 rounded-md shadow-md cursor-pointer transform hover:scale-105 transition-transform duration-200 ease-in-out hover:shadow-lg"
               style={{ backgroundColor: savedColor.toString("hex") }}
+              onClick={() => loadColor(savedColor)}
             ></div>
             <Menu as="div" className="absolute bottom-2 right-2">
               <Menu.Button className="bg-gray-600 dark:bg-gray-700 rounded-full p-2 shadow-md">
