@@ -6,7 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import ColorCode from './components/ColorCode';
 import SavedColors from './components/SavedColors';
 import namer from 'color-namer';
-import { CColor, randomColor, hexToRgba } from './utils/colorUtils';
+import { CColor } from './utils/colorUtils';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -55,10 +55,10 @@ export default function App() {
     const url = new URL(window.location.href);
     const urlColor = url.searchParams.get('hex'); // Example format: https://example.com?hex=ff0000
     if (urlColor) {
-      const { r, g, b, a } = hexToRgba(urlColor);
+      const { r, g, b, a } = CColor.fromHex(urlColor);
       setColor({ r, g, b, a });
     } else {
-      const { r, g, b, a } = randomColor();
+      const { r, g, b, a } = CColor.random();
       setColor({ r, g, b, a });
     }
   }, []);
