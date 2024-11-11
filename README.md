@@ -51,17 +51,17 @@ Here's a brief overview of the project structure:
 colorshare/
 ├── src/
 │   ├── components/
-│   │   ├── ColorCode.jsx        # Displays individual color codes (HEX, RGB, HSL) with copy-to-clipboard
-│   │   ├── ColorPicker.jsx      # Color picker component using react-colorful
-│   │   ├── DarkModeToggle.jsx   # Dark mode toggle button
-│   │   ├── Footer.jsx           # Footer with credits and links
-│   │   ├── SavedColors.jsx      # Manages and displays saved colors with options for copying and deleting
+│   │   ├── ColorCode.jsx
+│   │   ├── ColorPicker.jsx
+│   │   ├── DarkModeToggle.jsx
+│   │   ├── Footer.jsx
+│   │   ├── SavedColors.jsx
 │   ├── utils/
-│   │   ├── colorUtils.js        # Utility functions for color conversions (HEX, RGB, HSL) and random color generation
-│   ├── App.jsx                  # Main component housing color picker and saved colors
-│   ├── index.css                # CSS styles --> including Tailwind
-│   └── index.js                 # Entry point for the React app
-└── tailwind.config.js           # Tailwind CSS configuration
+│   │   ├── colorUtils.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── index.js
+└── tailwind.config.js
 ```
 
 ## 🧪 Testing

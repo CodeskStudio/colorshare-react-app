@@ -1,3 +1,5 @@
+// utils/colorUtils.jsx
+
 // Color class to handle color conversions and formatting
 export class CColor {
     constructor(r, g, b, a = 1) {
