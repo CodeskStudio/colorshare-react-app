@@ -7,6 +7,7 @@ import ColorCode from './components/ColorCode';
 import SavedColors from './components/SavedColors';
 import namer from 'color-namer';
 import { CColor } from './utils/colorUtils';
+import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -156,6 +157,29 @@ export default function App() {
           />
         </div>
       </div>
+
+      {darkMode ? (
+        <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+          toastOptions={{
+            duration: 5000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }}
+        />
+      ) : (
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 5000,
+        }}
+      />
+      )}
+      
       <Footer />
     </div>
   );

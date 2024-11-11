@@ -1,14 +1,16 @@
 // components/ColorCode.jsx
 import React from 'react';
 import { ClipboardIcon } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function ColorCode({ label, value }) {
   // Function to copy color code to clipboard
   const copyToClipboard = () => {
     navigator.clipboard.writeText(value).then(() => {
-      console.log(`${label} copied to clipboard: ${value}`); //todo: replace with toast notification
+      toast.success(<span><strong>{label}</strong> copied to clipboard: {value}</span>);
     }).catch((error) => {
-      console.error('Failed to copy:', error); //todo: replace with toast notification
+      toast.error('Failed to copy to clipboard');
+      console.error('Failed to copy:', error);
     });
   };
 

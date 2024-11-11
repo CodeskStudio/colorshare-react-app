@@ -2,12 +2,14 @@
 import React from 'react';
 import { ChevronDownIcon, TrashIcon } from 'lucide-react';
 import { Menu } from '@headlessui/react';
+import toast from 'react-hot-toast';
 
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text).then(() => {
-    console.log(`Copied to clipboard: ${text}`); //todo: replace with toast notification
+    toast.success(<span><strong>{text}</strong> copied to clipboard!</span>);
   }).catch((error) => {
-    console.error('Failed to copy:', error); //todo: replace with toast notification
+    toast.error('Failed to copy to clipboard');
+    console.error('Failed to copy:', error);
   });
 };
 

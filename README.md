@@ -88,4 +88,4 @@ This project is licensed under the MIT License.
 
 ## 📝 Acknowledgments
 
-Special thanks to the contributors (aka. `ChatGPT`) and libraries that helped make this project possible, including `react-colorful` for the color picker, `color-namer` for naming color codes, and Tailwind CSS for styling.
+Special thanks to the contributors (aka. `ChatGPT`) and libraries that helped make this project possible, including `react-colorful` for the color picker, `color-namer` for naming color codes, `react-hot-toast` for notifications, and Tailwind CSS for styling.
