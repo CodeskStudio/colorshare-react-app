@@ -29,16 +29,16 @@ export class CColor {
         let r = this.r / 255;
         let g = this.g / 255;
         let b = this.b / 255;
-
+    
         const max = Math.max(r, g, b);
         const min = Math.min(r, g, b);
         const delta = max - min;
-
+    
         let h = 0, s = 0, l = (max + min) / 2;
-
+    
         if (delta !== 0) {
             s = l > 0.5 ? delta / (2 - max - min) : delta / (max + min);
-
+    
             switch (max) {
                 case r:
                     h = ((g - b) / delta + (g < b ? 6 : 0)) * 60;
@@ -51,14 +51,15 @@ export class CColor {
                     break;
             }
         }
-
-        s = +(s * 100).toFixed(1);
-        l = +(l * 100).toFixed(1);
-
+    
+        h = h.toFixed(1);
+        s = (s * 100).toFixed(1).replace(/\.0+$/, ''); // Remove .0 if present
+        l = (l * 100).toFixed(1).replace(/\.0+$/, ''); // Remove .0 if present
+    
         return this.a === 1
-            ? `hsl(${h.toFixed(1)}, ${s}%, ${l}%)`
-            : `hsla(${h.toFixed(1)}, ${s}%, ${l}%, ${this.a})`;
-    }
+            ? `hsl(${h}, ${s}%, ${l}%)`
+            : `hsla(${h}, ${s}%, ${l}%, ${this.a})`;
+    }    
 
     // Returns the color as a string in the specified format
     toString(format) {
