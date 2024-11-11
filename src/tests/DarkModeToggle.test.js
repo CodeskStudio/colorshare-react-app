@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import DarkModeToggle from './DarkModeToggle';
+import DarkModeToggle from '../components/DarkModeToggle.jsx';
 
 test('renders correct icon based on dark mode status', () => {
   const { rerender } = render(<DarkModeToggle darkMode={true} setDarkMode={() => {}} />);
