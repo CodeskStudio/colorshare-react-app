@@ -66,7 +66,7 @@ colorshare/
 
 ## 🧪 Testing
 
-To run tests (if you've added tests for functions or components), use the following command:
+To run tests, use the following command:
 
 ```bash
 npm test
